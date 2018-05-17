@@ -13,6 +13,9 @@ public class MySqlConnection {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/company", "root", "bridgeit");
+			if(con==null){
+				System.out.println("Connection problem!");
+			}
 //			System.out.println("Successfully Connected ");
 		} catch (SQLException e) {
 			System.out.println("Failed Connection");

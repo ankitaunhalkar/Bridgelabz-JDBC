@@ -1,10 +1,9 @@
-package com.bridgelabz.statement;
+package com.bridgelabz.callablestatement;
 
 import java.util.Scanner;
 
-
 public class Application {
-	
+
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		do {
@@ -12,16 +11,16 @@ public class Application {
 					.println("Enter Choice:\n 1. Insert Employee\t 2. Edit Employee\t 3. View Employee\t 4. Delete Employee\t 5. Exit");
 			switch (scanner.nextInt()) {
 			case 1:
-				Soperations.insertion();
+				Coperations.insertion();
 				break;
 			case 2:
-				Soperations.updation();
+				Coperations.updation();
 				break;
 			case 3:
-				Soperations.selection();
+				Coperations.selection();
 				break;
 			case 4:
-				Soperations.deletion();
+				Coperations.deletion();
 				break;
 			case 5:
 				scanner.close();

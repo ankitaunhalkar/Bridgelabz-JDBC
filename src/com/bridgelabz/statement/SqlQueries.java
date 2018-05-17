@@ -9,7 +9,7 @@ import java.util.Scanner;
 import com.bridgelabz.connection.Employee;
 import com.bridgelabz.connection.MySqlConnection;
 
-public class SqlOperations {
+public class SqlQueries {
 	static Connection con = MySqlConnection.getConnection();;
 	static Statement st = null;
 	static Scanner scanner = new Scanner(System.in);
@@ -97,5 +97,7 @@ public class SqlOperations {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 	}
+	
 }
