@@ -84,7 +84,7 @@ public class SqlQueries {
 		}
 
 	}
-
+	
 	public static int edit(Employee emp, String field, String value) {
 		int result=0;
 		String query = "update employee set "+field+" = ? where eid = ?";

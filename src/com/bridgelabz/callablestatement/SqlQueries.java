@@ -37,10 +37,8 @@ public class SqlQueries {
 	
 			cst = con.prepareCall("{call deletion(?)}");
 			cst.setInt(1, emp.getEid());
-			
 			result = cst.executeUpdate();
 			
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -64,34 +62,35 @@ public class SqlQueries {
 
 	public static void display(Employee emp) {
 		try {
-			cst = con.prepareCall("{call selection(?,?,?,?,?)}");
+			cst = con.prepareCall("{call output(?,?,?,?,?)}");
 			cst.setInt(1, emp.getEid());
 			cst.registerOutParameter(1, Types.INTEGER);
 			cst.registerOutParameter(2, Types.VARCHAR);
 			cst.registerOutParameter(3, Types.VARCHAR);
 			cst.registerOutParameter(4, Types.VARCHAR);
-			cst.registerOutParameter(5, Types.VARCHAR);
-			cst.executeUpdate();
+			cst.registerOutParameter(5, Types.VARCHAR);			
+			cst.execute();
 			
-			int id = cst.getInt(1);
-			String name = cst.getString(2);
-			String email = cst.getString(3);
-			String loc = cst.getString(4);
-			String mob = cst.getString(5);
-			System.out.println(id);
-			System.out.println(name);
-			System.out.println(email);
-			System.out.println(loc);
-			System.out.println(mob);
+			System.out.println(cst.getInt(1)+" "+cst.getString(2)+" "+cst.getString(3)+" "+cst.getString(4)+" "+cst.getString(5));
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
 	}
 
-	public static int edit(Employee emp, String string, String next) {
-		
-		return 0;
+	public static int edit(Employee emp, String field, String value) {
+		int result = 0;
+		try {
+			cst = con.prepareCall("{call updation(?,?,?)}");
+			cst.setInt(1, emp.getEid());
+			cst.setString(2, field);
+			cst.setString(3, value);
+			result = cst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }
